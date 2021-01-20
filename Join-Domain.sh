@@ -41,9 +41,6 @@ fi
 #changing to new dir
 echo changing to new dir
 cd ./$dirname
-mkdir -p software
-mkdir -p Mcafee
-
 echo sleeping
 sleep .5
 
