@@ -116,32 +116,13 @@ sudo pam-auth-update
 #restart stuff
 systemctl restart sssd
 
-#Fetching Chrome
-echo fetching chrome!
-sleep .5
-sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-#installing chrome
-echo installing Chrome!
-sudo apt install ./google-chrome*.deb
-
-#fetching zoom
-echo fetching zoom!!
-sleep .5
-sudo wget https://zoom.us/client/latest/zoom_amd64.deb
-sudo dpkg -i ./zoom_amd64.deb
-
-#fetching slack
-echo installing ye old slack
-sleep .5
-sudo snap install slack --classic
-
 
 #cleaning up
 echo cleaning up!
 sleep 2
 rm -rf /$dirname
 
-echo Build complete! please reboot this machine and login as the user. 
+echo Complete! please reboot this machine and login as the user. 
 echo hit CTRL+C to end
 echo -e "\n"
 sleep 20
