@@ -2,6 +2,9 @@
 #Written by John Limb Jan 2021
 #Creating a simple bash menu to aid use of linux build
 ##---------------------------
+red=`tput setaf 1`
+green=`tput setaf 2`
+reset=`tput sgr0`
 PS3='Choose your option: '
 options=("Join-domain" "Install apps" "Harden machine" "Quit")
 select opt in "${options[@]}"; do
@@ -24,6 +27,6 @@ select opt in "${options[@]}"; do
         echo "Exiting, byee!"
         exit
         ;;
-    *) echo "invalid option $REPLY" ;;
+    *) echo -e "${red}invalid option $REPLY" ${reset} ;;
     esac
 done
