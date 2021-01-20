@@ -5,6 +5,10 @@ For Building Linux laptops (ubuntu) and hardening to CIS standards
 The purpose of this project is to aid with the build of ubuntu based machines.
 I have tried to make this as user friendly as possible, hence the menu options for example, if you needed to just join the machine to the domain, you have that option.
 
+### Operating system support
+Supported/Tested:
+Ubuntu 20.10
+
 ## How to run
 1) Clone this Git repo to a file on the local machine
 2) Make shell scripts executable 
