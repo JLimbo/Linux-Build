@@ -7,7 +7,7 @@ I have tried to make this as user friendly as possible, hence the menu options f
 
 ### Operating system support
 Supported/Tested:
-Ubuntu 20.10
+Ubuntu 20.04LTS
 
 ## How to run
 1) Clone this Git repo to a file on the local machine
