@@ -1,5 +1,5 @@
 #Written by John Limb 1/21
-#Rational: Disabling the support for filesystems that are not needed will reduce attack surface of machine. 
+#Rational: Disabling the support for filesystems that are not needed will reduce attack surface of machine. Also securing folders to make adjustments harder. 
 #Set colour variables
 red=$(tput setaf 1)
 green=$(tput setaf 2)
@@ -29,4 +29,54 @@ EOF
 
 sudo mv /tmp/dev-sec.conf /etc/modprobe.d/
 
+echo "######Configuring Filesystem permissions######"
+#/etc/passwd
+chown root:root /etc/passwd
+chmod 644 /etc/passwd
+#/etc/gshadow
+chown root:root /etc/gshadow-
+chown root:shadow /etc/gshadow-
+chmod o-rwx,g-wx /etc/gshadow-
+#/etc/shadow
+chown root:root /etc/shadow
+chown root:shadow /etc/shadow
+chmod o-rwx,g-wx /etc/shadow
+#/etc/group
+chown root:root /etc/group
+chmod u-x,go-wx /etc/group
+#/etc/passwd-
+chown root:root /etc/passwd-
+chmod u-x,go-wx /etc/passwd-
+#/etc/shadow-
+chown root:shadow /etc/shadow-
+chmod u-x,g-wx,o-rwx /etc/shadow-
+#/etc/group-
+chown root:root /etc/group-
+chmod u-x,go-wx /etc/group-
+#/etc/gshadow
+chown root:root /etc/gshadow
+chown root:shadow /etc/gshadow
+chmod u-x,g-wx,o-rwx /etc/gshadow
+#
+echo "######looking at home directory permissions######"
+cat /etc/passwd | egrep -v '^(root|halt|sync|shutdown)' | awk -F: '($7 != "/usr/sbin/nologin" && $7 != "/bin/false") { print $1 " " $6 }' | while read user dir; do
+  if [ ! -d "$dir" ]; then
+    echo "The home directory ($dir) of user $user does not exist."
+  else
+    dirperm=`ls -ld $dir | cut -f1 -d" "`
+    if [ `echo $dirperm | cut -c6` != "-" ]; then
+      echo "Group Write permission set on the home directory ($dir) of user $user"
+    fi
+    if [ `echo $dirperm | cut -c8` != "-" ]; then
+      echo "Other Read permission set on the home directory ($dir) of user $user"
+    fi
+    if [ `echo $dirperm | cut -c9` != "-" ]; then
+      echo "Other Write permission set on the home directory ($dir) of user $user"
+    fi
+    if [ `echo $dirperm | cut -c10` != "-" ]; then
+      echo "Other Execute permission set on the home directory ($dir) of user $user"
+    fi
+  fi
+done
+#
 

@@ -18,7 +18,8 @@ echo "######Upgrade VIM and purge non required packages######"
 sudo add-apt-repoistory ppa:jonathonf/vim -y
 sudo apt update
 sudo apt install vim -y
-
+#purge prelink program that modifies ELF shared libraries and ELF dynamically linked binaries in such a way that the time needed for the dynamic linker to perform relocations at startup significantly decreases.
+sudo apt purge prelink
 sudo apt-get purge telnet rsync -y
 
 # Next up we configure Journald
