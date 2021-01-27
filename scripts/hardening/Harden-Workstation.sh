@@ -41,7 +41,7 @@ echo "printf \"Your session has been logged\n"\" | sudo tee -a /etc/update-motd.
 echo "printf \"\n"\" | sudo tee -a /etc/update-motd.d/00-header
 sudo touch /etc/motd
 sudo chmod 644 /etc/motd
-sudo mv /etc/update-motd.d/10-help-text /var/tmp/
+#sudo mv /etc/update-motd.d/10-help-text /var/tmp/
 echo "All connections are monitored and recorded" | sudo tee /etc/issue.net
 echo "Disconnect immediately if you are not authorized user" | sudo tee -a /etc/issue.net
 echo "All connections are monitored and recorded" | sudo tee /etc/issue
@@ -51,11 +51,6 @@ echo "######Create Sudo Logfile and pty######"
 echo "Defaults logfile="/var/log/sudo.log"">>/etc/sudoers
 echo "Defaults use_pty">>/etc/sudoers
 
-echo "######Install AIDE######"
-apt install aide aide-common -y
-aideinit
-mv /var/lib/aide/aide.db.new /var/lib/aide/aide.db
-
 echo "######Setting Root password######"
 echo enter root password
 read password
@@ -63,3 +58,8 @@ passwd root << EOD
 ${password}
 ${password}
 EOD
+
+echo "######Install AIDE######"
+apt install aide aide-common -y
+aideinit
+mv /var/lib/aide/aide.db.new /var/lib/aide/aide.db

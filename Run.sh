@@ -3,16 +3,19 @@
 #Creating a simple bash menu to aid use of linux build
 ##---------------------------
 #Set colour variables
-red=`tput setaf 1`
-green=`tput setaf 2`
-reset=`tput sgr0`
-#setting variable to auto exit on error 
-set -eo pipefail  
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+reset=$(tput sgr0)
+#setting variable to auto exit on error
+set -eo pipefail
 #Checking if you are root.. if not then you will get error
 echo Checking that you are root...
 #sleeping
 sleep .5
-if [[ $(id -u) -ne 0 ]] ; then echo -e "${red}UH OH! you are not root! Please run me as root!"${reset} ; exit 1 ; fi
+if [[ $(id -u) -ne 0 ]]; then
+    echo -e "${red}UH OH! you are not root! Please run me as root!"${reset}
+    exit 1
+fi
 
 PS3='Choose your option: '
 options=("Join-domain" "Install apps" "Harden Workstation" "Add user to Sudoers" "Quit")
@@ -21,7 +24,7 @@ select opt in "${options[@]}"; do
     "Join-domain")
         echo "Calling Script to Join domain"
         sleep .10
-        ./scripts/Join-Domain.sh
+        ./scripts/functions/Join-Domain.sh
         ;;
     "Install apps")
         echo "Calling Script to install applications."
@@ -30,13 +33,13 @@ select opt in "${options[@]}"; do
         ;;
     "Harden Workstation")
         echo "Calling Script to harden Workstation."
-        ./scripts/Harden-Workstation.sh
-        ./scripts/Filesystem_config.sh
-        ./scripts/Enable-ASLR.sh
-        ./scripts/Device-Firewall.sh
-        ./scripts/Network_params.sh
-        ./scripts/ssh_params.sh
-        ./scripts/cron.sh
+        ./scripts/hardening/Harden-Workstation.sh
+        ./scripts/hardening/Filesystem_config.sh
+        ./scripts/hardening/Enable-ASLR.sh
+        ./scripts/hardening/Device-Firewall.sh
+        ./scripts/hardening/Network_params.sh
+        ./scripts/hardening/ssh_params.sh
+        ./scripts/hardening/cron.sh
         ;;
     "Add user to Sudoers")
         echo "calling file to add user to sudoers"
