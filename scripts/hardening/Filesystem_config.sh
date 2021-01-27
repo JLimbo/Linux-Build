@@ -95,3 +95,7 @@ echo "tmpfs /dev/shm tmpfs defaults,nodev,nosuid,noexec 0 0" >> /etc/fstab
 echo "tmpfs /tmp tmpfs rw,noexec,nodev,nosuid,size=2G 0 0" >> /etc/fstab
 mount -o remount,nodev,noexec /dev/shm
 mount -o nodev,noexec /tmp
+
+#Log file permissions
+echo "############## 1.3 Fix permissions on logfiles ##############"
+find /var/log -type f -exec chmod g-wx,o-rwx {} +

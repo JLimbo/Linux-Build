@@ -22,16 +22,6 @@ sudo apt install vim -y
 sudo apt purge prelink
 sudo apt-get purge telnet rsync -y
 
-# Next up we configure Journald
-echo "######## Configure Journald - ########"
-sed -i -r 's/#ForwardToSyslog=yes/ForwardToSyslog=yes/g' /etc/systemd/journald.conf
-sed -i -r 's/#Compress=yes/Compress=yes/g' /etc/systemd/journald.conf
-sed -i -r 's/#Storage=auto/Storage=persistent/g' /etc/systemd/journald.conf
-
-#Log file permissions
-echo "############## 1.3 Fix permissions on logfiles ##############"
-find /var/log -type f -exec chmod g-wx,o-rwx {} +
-
 echo "######Creating login banner and motd######"
 #Update login banners
 echo "printf \"\n"\" | sudo tee -a /etc/update-motd.d/00-header
