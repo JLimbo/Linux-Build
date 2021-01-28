@@ -66,7 +66,7 @@ unzip
 EOF
 )
 #set hostname
-echo "Enter machine hostname example:UK04-Lxxxyyy123"
+echo "Enter machine name"
 read hostname
 echo -e $hostnmame is now hostname - setting
 sleep .10
