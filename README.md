@@ -1,4 +1,4 @@
-# Linux Build 2021
+# Linux Hardening Scripts
 For Building Linux workstations (ubuntu) and hardening to CIS standards - Level 1 
 ### This is very much a work in progress and should be treated as such. 
 ## Purpose
