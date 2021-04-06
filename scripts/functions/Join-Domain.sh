@@ -15,7 +15,7 @@ if [[ $(id -u) -ne 0 ]]; then
 fi
 
 #define admin running script
-echo Enter Domain Admin username
+echo Enter Domain Admin username@domain
 read username
 echo -e hello $username - Welcome to the Linux build script. Please follow any onscreen instructions given.
 sleep .10
@@ -123,6 +123,11 @@ sudo pam-auth-update
 
 #restart stuff
 systemctl restart sssd
+
+systemctl status sssd
+sleep .20
+
+echo "Check if machine has joined domain by getting ID/ User data by Typing id $Username@$DOMAIN"
 
 #edit lightdm
 echo "greeter-show-manual-login=true" >>$lightdm

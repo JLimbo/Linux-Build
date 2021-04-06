@@ -43,7 +43,7 @@ chmod og-rwx /etc/cron.d/
 
 #Now we lock down cron - We Remove file, so cron only checks the cron allow. only list users in there and have default deny if not listed in the allow file.
 #Work will need to be done on join-domain.sh so that the user of the machine can access cron
-rm /etc/cron.deny
+#rm /etc/cron.deny
 
 #Now create cron allow
 touch /etc/cron.allow
@@ -53,7 +53,7 @@ chmod g-wx,o-rwx /etc/cron.allow
 chown root:root /etc/cron.allow
 
 #Now we lock down at - Same logic applies to cron.deny being removed.
-rm /etc/at.deny
+#rm /etc/at.deny
 #Create at.allow file
 touch /etc/at.allow
 #set permissions on at.allow

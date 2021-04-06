@@ -35,7 +35,7 @@ select opt in "${options[@]}"; do
         echo "Calling Scripts to harden Workstation."
         ./scripts/hardening/Harden-appinstall.sh
         ./scripts/hardening/Journal-config.sh
-        ./scritps/hardening/MOTD.sh
+        ./scripts/hardening/MOTD.sh
         ./scripts/hardening/Restrict-Sudo.sh
         ./scripts/hardening/Password_policy.sh
         ./scripts/hardening/Filesystem_config.sh
@@ -48,6 +48,7 @@ select opt in "${options[@]}"; do
         ;;
     "Add user to Sudoers")
         echo "calling file to add user to sudoers"
+        ./scripts/functions/Add-Sudoer.sh
         ;;
     "Quit")
         echo "Exiting, byee!"
