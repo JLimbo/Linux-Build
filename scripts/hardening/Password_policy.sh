@@ -40,6 +40,6 @@ echo "auth required pam_tally2.so onerr=fail audit silent deny=5 unlock_time=900
 echo "account required pam_tally2.so" >> /etc/pam.d/common-account
 
 echo "###### Setting Password age and umask######"
-sed 's/^PASS_MAX_DAYS.*99999/PASS_MAX_DAYS 365/' $Login_Defs
+sed -i 's/^PASS_MAX_DAYS.*/PASS_MAX_DAYS 365/' $Login_Defs
 sed -i 's/^PASS_MIN_DAYS.*/PASS_MIN_DAYS 7/g' $Login_Defs
 sed -i 's/^UMASK.*/UMASK 027/g' $Login_Defs
