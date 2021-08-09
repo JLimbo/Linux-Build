@@ -101,5 +101,5 @@ sysctl -w net.ipv6.route.flush=1
 echo "###### Setting rules to block all but RFC1918 subnets ######"
 echo "ALL: ALL" >> /etc/hosts.deny
 echo "ALL: 10.0.0.0/255.0.0.0" >> /etc/hosts.allow
-echo "ALL: 172.160.0.0/255.240.0.0">>/etc/hosts.allow
+echo "ALL: 172.16.0.0/255.240.0.0">>/etc/hosts.allow
 echo "ALL: 192.168.0.0/255.255.0.0">>/etc/hosts.allow

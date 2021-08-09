@@ -26,7 +26,6 @@ echo "######Flushing current ruleset######"
 iptables -F
 echo "######Ensuring Default drop######"
 iptables -P INPUT DROP
-iptables -P OUTPUT DROP
 iptables -P FORWARD DROP
 echo "######Ensure loopback policy is configured######"
 iptables -A INPUT -i lo -j ACCEPT
@@ -50,7 +49,6 @@ echo "######Flush IP6tables rules######"
 ip6tables -F
 echo "######Ensure default deny firewall policy######"
 ip6tables -P INPUT DROP
-ip6tables -P OUTPUT DROP
 ip6tables -P FORWARD DROP
 
 ip6tables -A INPUT -i lo -j ACCEPT
