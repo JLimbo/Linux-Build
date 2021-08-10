@@ -18,4 +18,7 @@ if [[ $(id -u) -ne 0 ]]; then
 fi
 ##########Setting PreReqs#######################
 printf "\\n"
+printf "    For supported OS please see %bhttps://github.com/JLimbo/Linux-Hardening%b\\n"
 printf "    Downloading prerequesites for NSG client    \\n"
+printf "\\n"
+sudo apt install libappindicator1 libproxy1-plugin-webkit libnm-glib4 libnm-util2 libnl-cli-3-200
