@@ -21,4 +21,7 @@ printf "\\n"
 printf "    For supported OS please see %bhttps://github.com/JLimbo/Linux-Hardening%b\\n"
 printf "    Downloading prerequesites for NSG client    \\n"
 printf "\\n"
-sudo apt install libappindicator1 libproxy1-plugin-webkit libnm-glib4 libnm-util2 libnl-cli-3-200
+wget http://ftp.br.debian.org/debian/pool/main/n/network-manager/libnm-util2_1.6.2-3+deb9u2_amd64.deb http://ftp.br.debian.org/debian/pool/main/n/network-manager/libnm-glib4_1.6.2-3+deb9u2_amd64.deb
+sudo apt install ./libnm-util2_1.6.2-3+deb9u2_amd64.deb ./libnm-glib4_1.6.2-3+deb9u2_amd64.deb 
+
+sudo apt install libappindicator1 libproxy1-plugin-webkit libnl-cli-3-200
