@@ -14,6 +14,9 @@ if [[ $(id -u) -ne 0 ]]; then
     echo -e "${red}UH OH! you are not root! Please run me as root!"${reset}
     exit 1
 fi
+sudo mkdir /etc/audit
+sudo touch /etc/autdit/audit.rules
+
 echo "-a always,exit -F arch=b64 -S sethostname -S setdomainname -k system-locale" | sudo tee -a /etc/audit/audit.rules
 echo "-a always,exit -F arch=b32 -S sethostname -S setdomainname -k system-locale" | sudo tee -a /etc/audit/audit.rules
 echo "-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change" | sudo tee -a /etc/audit/audit.rules
