@@ -1,4 +1,4 @@
-# Linux Hardening Scripts
+# Linux base build
 For Building Linux workstations (ubuntu) and hardening to CIS standards - Level 1 
 ### This is very much a work in progress and should be treated as such. 
 ## Purpose
